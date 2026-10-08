@@ -1,0 +1,9 @@
+{
+  "short_name": "ZJ Energy",
+  "name": "Guangdong ZJ Energy Co., Ltd.",
+  "icons": [{"src":"/brand/favicon.svg","sizes":"64x64","type":"image/svg+xml"}],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#0a2239",
+  "background_color": "#ffffff"
+}
