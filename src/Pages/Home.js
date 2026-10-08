@@ -1,15 +1,34 @@
 import { Link } from 'react-router-dom';
 import { useLanguage, SEO } from '../App';
 import { products } from '../assets/products';
+import img1 from "../assets/images/gee1.jpeg";
 
 export default function Home(){
  const {language}=useLanguage(); const zh=language==='zh';
  return <>
  <SEO title={zh?'广东ZJ能源有限公司 | 电力设备与能源解决方案':'Guangdong ZJ Energy Co., Ltd. | Power Equipment & Energy Solutions'} description="Guangdong ZJ Energy supplies industrial power equipment for dealers and distributors, including oil-immersed transformers and generator engines."/>
+
  <section className="home-hero"><div className="hero-overlay"><div className="container hero-content"><div className="eyebrow">{zh?'工业电力设备':'Industrial Power Equipment'}</div><h1>{zh?'为可靠电力而生。':'Engineered for Reliable Power.'}</h1><p>{zh?'面向经销商、分销商和工业客户，提供专业的变压器与发电设备解决方案。':'Power equipment built for professional dealers, distributors and industrial markets — with dependable engineering, practical configurations and supply-focused service.'}</p><div className="hero-actions"><Link className="btn btn-primary" to="/products">{zh?'探索产品':'Explore Products'} →</Link><Link className="btn btn-outline hero-light" to="/contact">{zh?'联系我们':'Contact Us'}</Link></div></div></div></section>
- <section className="section"><div className="container"><div className="section-head"><div><div className="eyebrow">{zh?'我们的产品':'Our Products'}</div><h2>{zh?'为专业电力市场提供的设备':'Power Equipment for Professional Markets'}</h2><p>{zh?'专注于核心产品类别，并为不同市场和项目需求提供灵活配置。':'Focused product categories with configurations designed around dealer, distributor and project requirements.'}</p></div><Link className="product-link" to="/products">View all products →</Link></div><div className="grid-2">{products.map(p=><article className="card product-card" key={p.slug}><div className="placeholder"><span>{p.fallback}</span></div><div className="product-body"><div className="kicker">{p.category}</div><h3>{zh?p.cn:p.name}</h3><p>{p.description}</p><Link className="product-link" to={`/products/${p.slug}`}>View product →</Link></div></article>)}</div></div></section>
+
+ <section className="section"><div className="container"><div className="section-head"><div><div className="eyebrow">{zh?'我们的产品':'Our Products'}</div><h2>{zh?'为专业电力市场提供的设备':'Power Equipment for Professional Markets'}</h2><p>{zh?'专注于核心产品类别，并为不同市场和项目需求提供灵活配置。':'Focused product categories with configurations designed around dealer, distributor and project requirements.'}</p></div><Link className="product-link" to="/products">View all products →</Link></div><div className="grid-2">{products.map(p=><article className="card product-card" key={p.slug}><div className="product-image">
+  <img
+    src={p.image}
+    alt={zh ? p.cn : p.name}
+  />
+</div><div className="product-body"><div className="kicker">{p.category}</div><h3>{zh?p.cn:p.name}</h3><p>{p.description}</p><Link className="product-link" to={`/products/${p.slug}`}>View product →</Link></div></article>)}</div></div></section>
+
+
+
  <section className="section dark-section"><div className="container"><div className="section-head"><div><div className="eyebrow" style={{color:'#8fc7ef'}}>{zh?'为什么选择我们':'Why ZJ Energy'}</div><h2>{zh?'以可靠性、响应速度和供应能力为核心。':'Built around reliability, responsiveness and supply.'}</h2><p>{zh?'我们服务专业渠道伙伴，重视产品适配、稳定供应和长期合作。':'We are structured for professional channel partners who value fit-for-purpose equipment, dependable supply and long-term cooperation.'}</p></div></div><div className="grid-3"><div><div className="icon-box">01</div><h3>{zh?'渠道导向':'Channel Focused'}</h3><p>Designed around dealer and distributor relationships rather than one-off retail transactions.</p></div><div><div className="icon-box">02</div><h3>{zh?'工业定位':'Industrial Positioning'}</h3><p>Professional power equipment for commercial and industrial operating environments.</p></div><div><div className="icon-box">03</div><h3>{zh?'灵活配置':'Flexible Supply'}</h3><p>Product configurations can be aligned with project specifications and market requirements.</p></div></div></div></section>
- <section className="section"><div className="container"><div className="grid-2"><div><div className="eyebrow">{zh?'服务市场':'Markets We Serve'}</div><h2>{zh?'帮助经销商拓展可靠的电力产品线。':'Helping channel partners build reliable power portfolios.'}</h2><p>Guangdong ZJ Energy is positioned for B2B dealer and distributor relationships across international markets. Product availability, technical fit and clear communication are treated as core parts of the supply relationship.</p><Link className="btn btn-dark" to="/industries">Explore Industries</Link></div><div className="image-placeholder"><img src="/assets/images/factory-placeholder.svg" alt="Factory photography placeholder"/><span>Replace with approved factory / product photography</span></div></div></div></section>
+ <section className="section">
+    <div className="container">
+        <div className="grid-2">
+            <div>
+                <div className="eyebrow">{zh?'服务市场':'Markets We Serve'}</div>
+                <h2>{zh?'帮助经销商拓展可靠的电力产品线。':'Helping channel partners build reliable power portfolios.'}</h2><p>Guangdong ZJ Energy is positioned for B2B dealer and distributor relationships across international markets. Product availability, technical fit and clear communication are treated as core parts of the supply relationship.</p><Link className="btn btn-dark" to="/industries">Explore Industries</Link></div>
+
+ <div className="image-placeholder">
+    <img src={img1} alt=""/><span>Replace with approved factory / product photography</span></div></div></div></section>
  <section className="cta-strip"><div className="container cta-inner"><div><div className="eyebrow">{zh?'开始合作':'Start a Conversation'}</div><h2>{zh?'正在寻找稳定的电力设备供应商？':'Looking for a reliable power equipment supplier?'}</h2></div><Link className="btn btn-primary" to="/contact">Contact Guangdong ZJ Energy →</Link></div></section>
  </>
 }
